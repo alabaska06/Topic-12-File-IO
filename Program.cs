@@ -37,11 +37,31 @@ namespace Topic_12_File_IO
             {
                 if (int.TryParse(line, out int number))
                 {
-                    Console.WriteLine(number);
+                    Console.WriteLine(number)
                     numbers.Add(number);
                 }
             }
 
+            int sum = numbers.Sum();
+            Console.WriteLine($"The sum of all numbers: {sum}.\n")
+
+            double average = numbers.Average();
+            Console.WriteLine($"The average of all numbers: {average}.\n")
+
+            numbers.Sort();
+            Console.WriteLine(numbers);
+
+            StreamWriter sorted = new StreamWriter("SortedNumber.txt");
+
+            foreach (int number in numbers)
+            {
+                sorted.WriteLine(number);
+            }
+            sorted.Close();
+
+            StreamWriter sumAndAverage = new StreamWriter("NumberSummery.txt");
+
+            sumAndAverage.WriteLine(sum, average);
 
         }
                 
